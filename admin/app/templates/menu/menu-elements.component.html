@@ -1,0 +1,33 @@
+<div class="menu-search">
+    <menu-search-box (update)="searchTerm = $event"></menu-search-box>
+</div>
+
+<div class="menu-items">
+    <accordion>
+        <accordion-group *ngFor="let category of categories"
+                         [isDisabled]="false"
+                         [isOpen]="category.ordering === 1"
+                         class="element-category">
+            <div accordion-heading>
+                <jtext text="{{'COM_CFORMS_' + category.name.toUpperCase()}}"></jtext>
+            </div>
+
+            <div *ngFor="let element of elements | menuCategory: category.name | elementSearch: searchTerm"
+                 [class.selected]="element === selectedElement"
+                 (click)="onSelectElement(element)"
+                 class="element-item">
+
+                <!-- Icon -->
+                <i *ngIf="element.iconType=='glyphicon'" class="{{element.icon}} element-item-icon"></i>
+
+                <div *ngIf="element.iconType=='image'" class="element-item-image">
+                    <img src="{{element.icon}}" alt="{{element.label}}" class="img-responsive img-rounded "/>
+                </div>
+
+                <div class="element-item-label">
+                    <strong>{{element.label}}</strong>
+                </div>
+            </div>
+        </accordion-group>
+    </accordion>
+</div>

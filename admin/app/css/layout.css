@@ -1,0 +1,223 @@
+/* CForms - Layout CSS */
+
+#cforms {
+	position: relative;
+	background: #fff;
+	display:flex;
+}
+
+#cforms_container {
+	width: calc(100% - 100px);
+}
+
+#cforms_menu {
+	float: left;
+	width: 70px;
+	background: #333;
+	min-height: 500px;
+	color: #fff;
+	text-align: center;
+	padding: 0;
+}
+
+/** Title & top menu */
+cforms-title {
+	width: 100%;
+}
+
+#cforms_title_bar {
+	display: flex;
+	background: #333;
+	width: 100%;
+	color: #fff;
+}
+
+#cforms_title_bar h3 {
+	padding: 15px 10px 15px 60px;
+	margin: 0;
+	color: #fff;
+}
+
+#cforms_title_bar h5, #cforms_title_bar h6 {
+	margin: 0;
+}
+
+#cforms_title_bar_inner {
+}
+
+.flex-center {
+	display: flex;
+	align-items: center;
+}
+
+#cforms-icon {
+	width: 70px;
+	background: #5ffc2a;
+	float: left;
+}
+
+#title_menu_info {
+	margin-right: 20px;
+}
+
+#title_menu_right {
+}
+
+.title-menu-item {
+	margin: 3px 15px 0 15px;
+}
+
+.title-menu-item .glyphicon {
+	font-size: 15px;
+}
+
+/** Canvas / Main */
+#cforms_message_container {
+	width: 700px;
+	margin: 0 auto;
+}
+
+#cforms_canvas {
+	position: relative;
+	background: #999;
+	padding: 35px 20px 20px 20px;
+	overflow: scroll;
+}
+
+/* Step Heading */
+#cforms_stepheading {
+	margin: 10px 0 40px 0;
+}
+
+#canvas_inner {
+	margin: 0 auto;
+}
+
+#canvas_draw {
+	background: #f9f9f9;
+	padding: 10px;
+	overflow: scroll;
+}
+
+.canvas-menu-open {
+	margin-left: 150px;
+}
+
+.canvas-Lg {
+	width: 1070px;
+	min-height: 600px;
+}
+
+.canvas-Md {
+	width: 700px;
+	min-height: 600px;
+}
+
+.canvas-Sm {
+	width: 320px;
+	height: 480px;
+}
+
+.canvas-hidden-Xs, .canvas-hidden-Sm, .canvas-hidden-Md, .canvas-hidden-Lg {
+	opacity: 0.7;
+	border: 1px dashed red;
+}
+
+.condition-show {
+	opacity: 0.7;
+	border: 1px dashed #009595;
+}
+
+.condition-hidden {
+	border: 1px dashed #942a25;
+}
+
+/** Overrides - todo remove */
+.container-fluid {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+
+.subhead-collapse {
+	margin-bottom: 0 !important;
+}
+
+#canvas_controls {
+	position: absolute;
+	top: 0;
+	right: 30px;
+	color: #888;
+	font-size: 120%;
+	background: #333;
+	padding: 5px 10px;
+	border-radius: 0 0 5px 5px;
+	height: 25px;
+}
+
+#canvas_controls i {
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+#canvas_controls .active {
+	color: #fff;
+}
+
+#canvas_page_menu {
+	margin-top: 5px;
+}
+
+.compojoom-bootstrap .form-group {
+	margin-bottom: 0;
+	padding: 7px 5px;
+}
+
+/** Properties */
+#properties .tab-content {
+	padding: 10px 5px;
+}
+
+
+#field-controls {
+	margin-top: 25px;
+	padding: 10px 0;
+	border-top: 1px dotted #ccc;
+}
+
+/** Drag container */
+#cforms_drag_container {
+	position: absolute;
+	top: 0;
+	right: 50%;
+	width: 700px;
+	margin-right: -350px;
+}
+
+#cforms_drag_container_inner {
+	background: #333;
+	color: #fff;
+	width: 60%;
+	margin: 0 auto;
+	border-radius: 0 0 5px 5px;
+	height: 25px;
+}
+
+/* Footer */
+/*.compojoom-bootstrap footer {*/
+	/*display: none;*/
+/*}*/
+
+.compojoom-bootstrap footer {
+	color: #fff;
+	text-align: center;
+	border: 0;
+}
+
+.compojoom-bootstrap .body.content.rows {
+	background: #333;
+}
+
+.compojoom-bootstrap label.label-hidden {
+	display: none;
+}
+

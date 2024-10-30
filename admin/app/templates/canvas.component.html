@@ -1,0 +1,112 @@
+<div id="cforms_canvas" [style.height.px]="canvasHeight">
+    <div id="canvas_controls">
+        <i class="fa fa-mobile" [class.active]="canvasSize === 'Sm'" (click)="changeSize('Sm')"></i>
+        <i class="fa fa-tablet" [class.active]="canvasSize === 'Md'" (click)="changeSize('Md')"></i>
+        <i class="fa fa-desktop" [class.active]="canvasSize === 'Lg'" (click)="changeSize('Lg')"></i>
+    </div>
+
+    <div id="cforms_message_container">
+        <alert *ngFor="let alert of alerts;let i = index"
+               [type]="alert.type"
+               dismissible="true"
+               (close)="alertService.closeAlert(i)">
+            {{ alert?.msg }}
+        </alert>
+    </div>
+
+    <div id="cforms_drag_container" [hidden]="!dragVisible">
+        <div id="cforms_drag_container_inner">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <div id="drop-delete"
+                         class="drop-area"
+                         [dragula]='"fields-bag"'
+                         [dragulaModel]='fields'
+                         data-drop-task="delete">
+                        <i class="fa fa-trash"></i>
+                        <jtext text="COM_CFORMS_DELETE_FIELD"></jtext>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="drop-duplicate"
+                         class="drop-area"
+                         data-drop-task="duplicate"
+                         [dragulaModel]='fields'
+                         [dragula]='"fields-bag"'>
+                        <i class="fa fa-copy"></i>
+                        <jtext text="COM_CFORMS_DUPLICATE_FIELD"></jtext>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="canvas_form {{form.bootstrapType}}">
+        <div id="canvas_inner" class="canvas-{{canvasSize}}">
+
+            <div id="canvas_draw"
+                 class="canvas-{{canvasSize}} wrapper"
+                 [class.canvas-menu-open]="menuService.getOpen()">
+
+                <!-- Before form -->
+                <canvas-design-before [form]="form" [currentPage]="currentPage" [canvasSize]="canvasSize">
+                </canvas-design-before>
+
+                <stepHeading [form]="form" [currentPage]="currentPage" [canvasSize]="canvasSize">
+                    Step Heading
+                </stepHeading>
+
+                <div [dragula]='"fields-bag"'
+                     [dragulaModel]='fields'
+                     data-drop-task="canvas"
+                     id="cforms_canvas_content"
+                    >
+                    <div *ngFor="let field of fields | orderBy : ['ordering']"
+                        (click)="onSelectField(field)"
+                        [class.selected-field]="field === currentField"
+                        class="col-md-{{getFieldSize(field)}} {{getFieldHidden(field)}}"
+                        [attr.field-id]="field.id"
+                        [hidden]="field.page !== currentPage"
+                        >
+                        <div [innerHTML]="field.render(true)"
+                             class="field-element">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- After form -->
+                <canvas-design-after [form]="form" [currentPage]="currentPage" [canvasSize]="canvasSize">
+                </canvas-design-after>
+            </div>
+
+            <div id="canvas_page_menu" class="text-right" *ngIf="form.pages > 1">
+                <button class="btn btn-default" (click)="deletePage()">
+                    <jtext text="COM_CFORMS_DELETE_PAGE"></jtext>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div id="canvas_html" [hidden]="config.debugMode == 0">
+        <cforms-canvas-html [form]="form" [fields]="fields">
+        </cforms-canvas-html>
+    </div>
+
+    <div id="canvas_pages" class="text-center">
+        <nav>
+            <ul class="pagination">
+                <li *ngFor="let page of form.pagesAr"
+                     [class.selected]="page === currentPage"
+                     (click)="onSelectPage(page)">
+                    <a>{{page}}</a>
+                </li>
+                <li *ngIf="form.params.confirmationPage == true">
+                    <a style="color: #000"><jtext text="COM_CFORMS_FORM_PARAMS_CONFIRMATIONPAGE"></jtext></a>
+                </li>
+                <li>
+                    <a (click)="newPage()"><jtext text="COM_CFORMS_NEW_PAGE"></jtext></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

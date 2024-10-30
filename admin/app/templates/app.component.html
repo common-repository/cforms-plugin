@@ -1,0 +1,45 @@
+<div id="cforms_title_bar">
+    <cforms-title
+            [form]="form"
+            [field]="selectedField"
+            [config]="config"
+            >
+        CForms
+    </cforms-title>
+</div>
+
+<div id="cforms" class="clearfix">
+    <div id="cforms_menu">
+        <cforms-menu [form]="form"
+                     [field]="selectedField"
+                     [fields]="fields"
+                     [elements]="elements"
+                     (onSelectLayerEvent)="setSelectedField($event)"
+            >
+        </cforms-menu>
+    </div>
+    <div id="cforms_container" class="clearfix">
+        <div id="cforms-container-inner">
+            <div class="row">
+                <div class="col-md-9">
+                    <cforms-canvas
+                            [form]="form"
+                            [elements]="elements"
+                            [fields]="fields"
+                            [config]="config"
+                            [field]="selectedField"
+                            (selectField)="setSelectedField($event.results)">
+                    </cforms-canvas>
+                </div>
+                <div class="col-md-3 padding-0 padding-top-15">
+                    <cforms-detail [form]="form"
+                                   [config]="config"
+                                   [field]="selectedField"
+                                   [fields]="fields"
+                        >
+                    </cforms-detail>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

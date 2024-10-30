@@ -1,0 +1,228 @@
+/**
+ * CForms - Design for Two Columns CForms Template
+ *
+ * Template: Modern
+ * ---
+ * This template affects both the frontend and also the editing in the admin area!
+ *
+ * Copyright (C) 2017 Yves Hoppe - All rights reserved
+ */
+
+#canvas_draw {
+    display: flex;
+    overflow: auto !important;
+    padding: 0 !important;
+    box-shadow: 0 0 11px 2px rgba(0,0,0,0.35);
+}
+
+.cforms-content {
+    display: flex;
+}
+
+#cforms_canvas_before {
+    width: 100%;
+}
+
+canvas-design-before {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.twocolumns-left {
+    padding: 30px 25px;
+}
+
+.twocolumns-left, canvas-design-before {
+    background: #488CFF;
+    flex: 1 1 0;
+    color: #fff;
+    line-height: 2;
+    position: relative;
+    text-align: center;
+}
+
+.twocolumns-left .fa {
+    font-size: 500%;
+    margin-bottom: 15px;
+    font-style: normal;
+}
+
+.twocolumns-left h3 {
+    margin-top: 5px;
+}
+
+#cforms_canvas_content, .cforms-pages {
+    flex: 1 1 0;
+    background: #0F1D35;
+    color: #fff;
+    padding: 20px 25px;
+}
+
+canvas-design-after {
+    display: none;
+}
+
+.twocolumns-content {
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+/* Steps */
+.twocolumns-left .steps {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 90%;
+}
+
+.twocolumns-left .steps .fa {
+    font-size: 85%;
+    color: #bbf3ff;
+}
+
+.twocolumns-left .steps .step-active .fa {
+    font-size: 100%;
+    color: #fff;
+}
+
+.twocolumns-left .steps .twocolumns-step {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* Confirmation */
+.cforms-page-confirmation {
+    background: #488CFF;
+    padding: 20px 25px;
+    flex: 1 1 0;
+}
+
+/* Form Styles */
+#cforms_canvas_content ::-webkit-input-placeholder, .compojoom-bootstrap .cforms-page ::-webkit-input-placeholder {
+    color: #a0a0a0;
+}
+#cforms_canvas_content :-moz-placeholder, .compojoom-bootstrap .cforms-page :-moz-placeholder {
+    color:    #a0a0a0;
+    opacity:  1;
+}
+#cforms_canvas_content ::-moz-placeholder {
+    color:    #a0a0a0;
+    opacity:  1;
+}
+#cforms_canvas_content :-ms-input-placeholder {
+    color:    #a0a0a0;
+}
+#cforms_canvas_content ::-ms-input-placeholder {
+    color:    #a0a0a0;
+}
+
+#cforms_canvas_content a, .compojoom-bootstrap .cforms-page a {
+    color: #fff;
+}
+
+#cforms_canvas_content input, .compojoom-bootstrap .cforms-page input {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #F1F1F1;
+    padding: 5px 0;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.compojoom-bootstrap .cforms-content .form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: none;
+    color: #fff;
+}
+
+.cforms-content input[type="text"]:focus, .cforms-content input[type="email"]:focus, .cforms-content input[type="url"]:focus,
+.cforms-content input[type="password"]:focus, .cforms-content input[type="search"]:focus, .cforms-content input[type="number"]:focus, .cforms-content input[type="tel"]:focus, input[type="range"]:focus,
+.cforms-content input[type="date"]:focus, .cforms-content input[type="month"]:focus, .cforms-content input[type="week"]:focus, .cforms-content input[type="time"]:focus,
+.cforms-content input[type="datetime"]:focus, .cforms-content input[type="datetime-local"]:focus, .cforms-content input[type="color"]:focus, .cforms-content textarea:focus {
+    color: #fff !important;
+}
+
+#cforms_canvas_content .input-checkbox-element input, .compojoom-bootstrap .cforms-page .input-checkbox-element input {
+    margin: 0;
+}
+
+.compojoom-bootstrap .cforms-page input:focus:invalid:focus, .compojoom-bootstrap .cforms-page textarea:focus:invalid:focus,
+.compojoom-bootstrap .cforms-page select:focus:invalid:focus {
+    box-shadow: none;
+    border-color: #fb2626;
+}
+
+.compojoom-bootstrap .cforms-page input.invalid  {
+    border-color: #fb2626 !important;
+}
+
+.compojoom-bootstrap label.invalid {
+    color: #fb2626 !important;
+}
+
+#cforms_canvas_content .btn-group, .compojoom-bootstrap .cforms-page .btn-group {
+    margin: 5px 0 0 0;
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.25);
+    border-radius: 3px;
+}
+
+#cforms_canvas_content .btn-group .btn, .compojoom-bootstrap .cforms-page .btn-group .btn {
+    font-size: 13px;
+    background: #fff;
+    color: #488CFF;
+    border: 0;
+    margin: 0;
+}
+
+.input-checkbox-element {
+    color: #fff;
+}
+
+#cforms_canvas_content .btn-group .btn-success, .compojoom-bootstrap .cforms-page .btn-group .btn-success {
+    background: #488CFF;
+    color: #fff;
+}
+
+#cforms_canvas_content label, .compojoom-bootstrap .cforms-page label {
+    font-size: 85%;
+    font-weight: 300;
+    margin: 5px 0 0 0;
+    color: #f0f0f0;
+}
+
+#cforms_canvas_content .field-element, .compojoom-bootstrap .cforms-page .field-element, .compojoom-bootstrap .cforms-page .cforms-field {
+    margin: 10px 0;
+}
+
+.compojoom-bootstrap .cforms_navigation {
+    padding: 15px 0;
+}
+
+@media (max-width: 767px) {
+    .cforms-content {
+        display: block;
+    }
+
+    .twocolumns-inner  {
+        padding-bottom: 25px;
+    }
+
+    .compojoom-bootstrap .cforms-pages {
+        padding: 10px 0;
+    }
+
+    .modern-left .steps {
+        width: 30px;
+    }
+
+    .compojoom-bootstrap .cforms_navigation {
+        padding: 5px 0;
+    }
+
+    .compojoom-bootstrap .cforms-page {
+        padding: 15px;
+    }
+}

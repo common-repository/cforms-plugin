@@ -1,0 +1,8 @@
+<div *ngIf="form.stepHeadingRenderer != null && canvasSize != 'Sm' && form.stepHeading != 'none'"
+     id="cforms_stepheading" class="clearfix">
+	<link rel="stylesheet" [attr.href]="getCSS()"/>
+
+	<div class="col-md-12">
+		<div [innerHTML]="form.stepHeadingRenderer.render(form.pages, currentPage, form.params.confirmationPage)"></div>
+	</div>
+</div>

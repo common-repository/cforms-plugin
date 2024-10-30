@@ -1,0 +1,19 @@
+<div *ngIf="form.designRenderer != null && form.designRenderer.getParams(form) != false" class="design_menu_item">
+	<h4>
+		<jtext text="COM_CFORMS_DESIGN_CONFIGURATION"></jtext>
+	</h4>
+
+	<div id="design_configuration" class="text-left">
+		<div *ngFor="let entry of form.params.design[form.design] | keys" class="form-group">
+			<label>
+				<jtext text="{{'COM_CFORMS_FORM_DESIGN_PARAMS_' + entry.key.toUpperCase()}}"></jtext>
+			</label>
+
+			<textarea
+			       [(ngModel)]="form.params.design[form.designRenderer.name][entry.key]"
+			       (change)="updateForm(form)"
+			       class="form-control"
+			></textarea>
+		</div>
+	</div>
+</div>

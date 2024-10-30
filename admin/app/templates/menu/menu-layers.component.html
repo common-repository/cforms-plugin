@@ -1,0 +1,21 @@
+<div class="layer-search">
+    <menu-search-box (update)="searchTerm = $event"></menu-search-box>
+</div>
+<div class="layer-items clearfix">
+    <ul>
+        <!-- field is the selected field, so f loop -->
+        <li *ngFor="let f of fields | orderBy :  ['page', 'ordering']"
+            (click)="onSelectField(f)" class="layer-field">
+            <div class="">
+                <div *ngIf="f.hasLabel" class="field-label{{(field && field.id == f.id) ? ' active-layer' : ''}}">
+                    {{f.label}}
+                </div>
+                ({{f.type}})
+                {{(field && field.id == f.id) ? ' *' : ''}}
+            </div>
+            <div class="layer-page">
+               {{f.page}}
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,127 @@
+<h4>
+	<jtext text="COM_CFORMS_CONFIGURATION"></jtext>
+</h4>
+
+<div id="menu_configuration">
+	<div class="form-group text-left">
+		<label for="form-title">
+			<jtext text="COM_CFORMS_FORM_TITLE"></jtext>
+		</label>
+		<input type="text" required id="form-title"
+		       [(ngModel)]="form.title"
+		       (change)="updateForm(form)"
+		       class="form-control"/>
+	</div>
+
+	<div class="form-group text-left">
+		<label for="bootstrapType">
+			<jtext text="COM_CFORMS_FORM_TYPE"></jtext>
+		</label>
+		<select id="bootstrapType"
+		        [(ngModel)]="form.bootstrapType"
+		        (change)="updateFormSelect(form, $event.target.value)"
+		        class="form-control chzn-single">
+			<option value="">
+				<jtext text="COM_CFORMS_DEFAULT"></jtext>
+			</option>
+			<option value="form-inline">
+				<jtext text="COM_CFORMS_INLINE"></jtext>
+			</option>
+			<option value="form-horizontal">
+				<jtext text="COM_CFORMS_HORIZONTAL"></jtext>
+			</option>
+		</select>
+	</div>
+
+	<div class="form-group text-left">
+		<label for="design">
+			<jtext text="COM_CFORMS_TEMPLATE"></jtext>
+		</label>
+		<select id="design"
+		        [(ngModel)]="form.design"
+		        (change)="updateDesign(form, $event.target.value)"
+		        class="form-control chzn-single">
+			<option value="none">
+				<jtext text="COM_CFORMS_NONE"></jtext>
+			</option>
+			<option value="modern">
+				<jtext text="COM_CFORMS_MODERN"></jtext>
+			</option>
+			<option value="twocolumns">
+				<jtext text="COM_CFORMS_TWO_COLUMNS"></jtext>
+			</option>
+			<!-- v3.1
+			<option value="paperform">
+				<jtext text="COM_CFORMS_PAPER_FORM"></jtext>
+			</option>
+			-->
+		</select>
+	</div>
+
+	<div class="form-group text-left">
+		<label for="stepHeading">
+			<jtext text="COM_CFORMS_STEP_HEADING_TYPE"></jtext>
+		</label>
+		<select id="stepHeading"
+		        [(ngModel)]="form.stepHeading"
+		        (change)="updateStepHeading(form, $event.target.value)"
+		        class="form-control chzn-single">
+			<option value="none">
+				<jtext text="COM_CFORMS_NONE"></jtext>
+			</option>
+			<option value="rounded">
+				<jtext text="COM_CFORMS_ROUNDED"></jtext>
+			</option>
+			<option value="bar">
+				<jtext text="COM_CFORMS_BAR"></jtext>
+			</option>
+			<option value="squares">
+				<jtext text="COM_CFORMS_SQUARES"></jtext>
+			</option>
+			<option value="points">
+				<jtext text="COM_CFORMS_POINTS"></jtext>
+			</option>
+		</select>
+	</div>
+
+
+	<div *ngIf="form.params" class="text-left">
+
+		<!-- Parameter -->
+		<div *ngFor="let entry of form.params | keys; trackBy: trackByFn" class="form-group">
+			<div *ngIf="entry.key != 'design'">
+				<label>
+					<jtext text="{{'COM_CFORMS_FORM_PARAMS_' + entry.key.toUpperCase()}}"></jtext>
+				</label>
+
+				<div *ngIf="isBoolean(form.params[entry.key])" class="form-group">
+					<div class="btn-group btn-group-yesno radio" data-toggle="buttons">
+						<label [attr.for]="'form_' + entry.key + '_yes'" class="btn btn-default"
+						       [class.btn-success]="form.params[entry.key]">
+							<input type="radio" id="form_{{entry.key}}_yes" value="true"
+							       (change)="form.params[entry.key] = true; updateForm(form)"
+							       [checked]="form.params[entry.key]"/>
+							<jtext text="COM_CFORMS_YES"></jtext>
+						</label>
+						<label [attr.for]="'form_' + entry.key + '_no'" class="btn btn-default"
+						       [class.btn-warning]="!form.params[entry.key]">
+							<input type="radio" id="form_{{entry.key}}_no" value="false"
+							       (change)="form.params[entry.key] = false; updateForm(form)"
+							       [checked]="!form.params[entry.key]"/>
+							<jtext text="COM_CFORMS_NO"></jtext>
+						</label>
+					</div>
+				</div>
+
+				<div *ngIf="!isBoolean(form.params[entry.key])">
+					<input type="text"
+					       [(ngModel)]="form.params[entry.key]"
+					       (change)="updateForm(form)"
+					       class="form-control"
+					/>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

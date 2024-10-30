@@ -1,0 +1,108 @@
+/* CForms - Menu */
+.menu-search {
+	padding: 10px 20px 4px 20px;
+}
+
+.menu-item-icon, .element-item-icon {
+	font-size: 22px;
+}
+
+.menu-item-label {
+	font-size: 9px;
+}
+
+.menu-item {
+	margin-bottom: 15px;
+	padding: 6px 2px;
+	cursor: pointer;
+}
+
+#menu_view {
+	position: absolute;
+	top: 0;
+	left: 68px;
+	width: 300px;
+	height: 100%;
+	background: rgba(255,255,255,0.95);
+	border-right: 1px solid #111;
+	z-index: 999;
+	color: #111;
+}
+
+#menu_view_inner {
+	padding: 0;
+	height: 100%;
+	overflow: scroll;
+}
+
+#menu_view h4 {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	background: #f5f5f5;
+}
+
+#menu_view h4.panel-title {
+	border: 0;
+	padding: 0;
+}
+
+#cforms_menu .selected {
+	background: #fff;
+	color: #111;
+}
+
+.element-item {
+	padding: 20px 10px;
+	cursor: pointer;
+}
+
+.element-item:hover {
+	background: #f1f1f1;
+}
+
+.element-item-image {
+	width: 75%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.compojoom-bootstrap .panel-body {
+	padding: 0;
+}
+
+#menu_configuration, #design_configuration {
+	padding: 10px 15px;
+}
+
+#design_configuration textarea {
+	height: 120px;
+}
+
+.active-layer {
+	font-weight: bold;
+}
+
+.layer-items ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.layer-items .layer-field {
+	margin: 10px 3px;
+	border: 1px solid #ccc;
+	position: relative;
+	padding: 3px 0;
+	cursor: pointer;
+}
+
+.layer-field .layer-page {
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	height: 20px;
+	margin-top: -10px;
+	padding: 0px 5px;
+	border: 1px solid #999;
+	color: #999;
+	border-radius: 3px;
+}

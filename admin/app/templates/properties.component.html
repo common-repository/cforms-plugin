@@ -1,0 +1,423 @@
+<h4><jtext text="COM_CFORMS_PROPERTIES"></jtext> <span *ngIf="field">{{field.label}}</span></h4>
+<form #propertiesForm="ngForm">
+	<div id="properties">
+		<div *ngIf="!field">
+			<label><jtext text="COM_CFORMS_PLEASE_SELECT_A_FIELD"></jtext></label>
+		</div>
+
+		<div *ngIf="field">
+			<tabset>
+				<tab heading="{{jText._('COM_CFORMS_BASIC')}}">
+					<div id="properties_basic">
+						<div *ngIf="field.hasLabel">
+							<div class="form-group">
+								<label for="label"><jtext text="COM_CFORMS_LABEL"></jtext></label>
+								<input type="text"
+								       class="form-control"
+								       id="label"
+								       (change)="updateField(field)"
+								       [(ngModel)]="field.label"
+							       placeholder="{{field.placeholder}}"/>
+							</div>
+
+							<label><jtext text="COM_CFORMS_SHOW_LABEL"></jtext></label>
+
+							<div class="form-group">
+								<div class="btn-group btn-group-yesno radio" data-toggle="buttons">
+
+									<label for="showLabel_true" class="btn btn-default" [class.btn-success]="field.showLabel">
+										<input type="radio" id="showLabel_true" value="true"
+										       (change)="field.showLabel = true; updateField(field)"
+										       [checked]="field.showLabel" />
+										<jtext text="COM_CFORMS_YES"></jtext>
+									</label>
+									<label for="showLabel_false" class="btn btn-default" [class.btn-warning]="!field.showLabel">
+										<input type="radio" id="showLabel_false" value="false"
+										       (change)="field.showLabel = false; updateField(field)"
+										       [checked]="!field.showLabel"/>
+										<jtext text="COM_CFORMS_NO"></jtext>
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div *ngIf="field.hasDefaultValue" class="form-group">
+							<label for="defaultValue"><jtext text="COM_CFORMS_DEFAULT_VALUE"></jtext></label>
+							<input type="text"
+							       class="form-control"
+							       id="defaultValue"
+							       (change)="updateField(field)"
+							       [(ngModel)]="field.defaultValue"/>
+						</div>
+
+						<div *ngIf="field.hasPlaceholder" class="form-group">
+							<label for="placeholder"><jtext text="COM_CFORMS_PLACEHOLDER"></jtext></label>
+							<input type="text"
+							       class="form-control"
+							       id="placeholder"
+							       (change)="updateField(field)"
+							       [(ngModel)]="field.placeholder"/>
+						</div>
+
+						<div *ngIf="field.hasOptions" class="form-group">
+							<!-- Options -->
+
+							<div class="row option-header">
+								<div class="col-md-10">
+									<label><jtext text="COM_CFORMS_OPTIONS"></jtext></label>
+								</div>
+								<div class="col-md-2">
+									<label>
+										<btn class="btn btn-info btn-xs" (click)="addNewOption()">+</btn>
+									</label>
+								</div>
+							</div>
+
+							<div *ngFor="let option of field.options; let i = index">
+								<div class="row option-controls">
+									<div class="col-md-10">
+										<input type="text"
+										       class="form-control"
+										       (keypress)="safeValue($event)"
+										       [(ngModel)]="option.key"
+										       (change)="updateField(field)"
+										       placeholder="{{jText._('COM_CFORMS_VALUE')}}"
+										/>
+									</div>
+									<div class="col-md-2">
+										<btn class="btn btn-warning" (click)="field.options.splice(i, 1)">-</btn>
+									</div>
+									<div class="col-md-12 text-center option-controls-buttons">
+										<i class="fa fa-arrow-circle-o-down fa-lg" (click)="option.value = option.key; updateField(field)"></i>
+										<i class="fa fa-arrow-circle-o-up fa-lg" (click)="option.key = option.value; updateField(field)"></i>
+									</div>
+									<div class="col-md-12">
+										<input type="text"
+										       class="form-control"
+										       [(ngModel)]="option.value"
+										       (change)="updateField(field)"
+										       placeholder="{{jText._('COM_CFORMS_TEXT')}}"
+										/>
+									</div>
+
+								</div>
+							</div>
+							<!-- //Options -->
+						</div>
+
+						<div *ngIf="field.hasRequired">
+							<!-- Required -->
+							<label><jtext text="COM_CFORMS_REQUIRED"></jtext></label>
+							<div class="form-group ">
+								<div class="btn-group btn-group-yesno radio" data-toggle="buttons">
+									<label for="required_true" class="btn btn-default" [class.btn-success]="field.required">
+										<input type="radio" id="required_true" value="true"
+										       (change)="field.required = true; updateField(field)"
+										       [checked]="field.required"/>
+										<jtext text="COM_CFORMS_YES"></jtext>
+									</label>
+									<label for="required_false" class="btn btn-default" [class.btn-warning]="!field.required">
+										<input type="radio" id="required_false" value="false"
+										       (change)="field.required = false; updateField(field)"
+										       [checked]="!field.required"/>
+										<jtext text="COM_CFORMS_NO"></jtext>
+									</label>
+								</div>
+							</div>
+
+							<!-- Validator -->
+							<div *ngIf="field.required && field.hasValidator" class="form-group">
+								<label for="placeholder">
+									<jtext text="COM_CFORMS_VALIDATOR"></jtext>
+								</label>
+								<select class="form-control"
+								        id="validators"
+								        [(ngModel)]="field.validator"
+								        (change)="updateValidator($event)"
+								        >
+									<option value="required"><jtext text="COM_CFORMS_VALIDATION_DEFAULT"></jtext></option>
+									<option value="required validate-username"><jtext text="COM_CFORMS_USERNAME"></jtext></option>
+									<option value="required validate-password"><jtext text="COM_CFORMS_PASSWORD"></jtext></option>
+									<option value="required validate-numeric"><jtext text="COM_CFORMS_NUMERIC"></jtext></option>
+									<option value="required validate-email"><jtext text="COM_CFORMS_EMAIL"></jtext></option>
+								</select>
+							</div>
+
+						</div>
+
+						<!-- Parameter -->
+						<div *ngIf="field.hasParams">
+							<div *ngFor="let entry of field.params | keys" class="form-group">
+								<label>
+									<jtext text="{{'COM_CFORMS_PARAMS_' + entry.key.toUpperCase()}}"></jtext>
+								</label>
+								<div *ngIf="entry.key != 'html'">
+									<input type="text"
+									       [(ngModel)]="field.params[entry.key]"
+									       (change)="updateField(field)"
+									       class="form-control"
+										/>
+								</div>
+								<div *ngIf="entry.key == 'html'">
+									<textarea
+											(change)="updateField(field)"
+											class="form-control"
+											rows="4"
+											[(ngModel)]="field.params[entry.key]"></textarea>
+								</div>
+							</div>
+						</div>
+
+					</div><!-- End Basic -->
+				</tab>
+				<tab heading="{{jText._('COM_CFORMS_SIZE_AND_POSITION')}}">
+					<div id="properties_position">
+						<div *ngFor="let device of devices"
+						     class="form-group properties-sizes">
+							<label data-toggle="tooltip" title="{{jText._('COM_CFORMS_TOOLTIP_SIZE_' + device)}}">
+								<jtext text="{{'COM_CFORMS_SIZE_' + device}}"></jtext>
+							</label>
+							<div class="pull-right small" (click)="applyToAll(device)">
+								[+ <jtext text="COM_CFORMS_APPLY_TO_ALL"></jtext>]
+							</div>
+							<div class="btn-group text-center" data-toggle="buttons">
+								<label *ngFor="let size of sizes" class="btn btn-default btn-sm"
+								       [class.active]="size == field['size' + device]">
+									<input type="radio"
+									       id="size{{device}}_{{size}}"
+									       value="{{size}}"
+									       [checked]="size==field['size' + device]"
+									       (change)="toggleSize(device, $event.target.value);updateField(field)"
+									       autocomplete="off"
+									/>
+									{{size}}
+								</label>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label><jtext text="COM_CFORMS_HIDDEN"></jtext></label>
+							<div id="properties_hidden">
+								<div class="btn-group" data-toggle="buttons">
+									<label *ngFor="let device of devices" class="btn btn-default btn-sm"
+									       [class.active]="field.isHidden(device)"
+										>
+										<input type="radio"
+										       id="hidden-{{device}}"
+										       [checked]="field.isHidden(device)"
+										       (click)="field.toggleHidden(device, $event)"
+										       (change)="updateField(field)"
+										       value="true"
+										/>
+										{{device}}
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="page"><jtext text="COM_CFORMS_PAGE"></jtext></label>
+							<input type="number"
+							       class="form-control"
+							       id="page"
+							       required
+							       [(ngModel)]="field.page"
+							       min="1"
+							       max="{{form.pages}}"
+							       (change)="updateField(field)"
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="ordering"><jtext text="COM_CFORMS_ORDERING"></jtext></label>
+							<input type="number"
+							       class="form-control"
+							       id="ordering"
+							       required
+							       [(ngModel)]="field.ordering"
+							       (change)="updateField(field)"
+							/>
+						</div>
+
+					</div>
+				</tab>
+				<tab heading="{{jText._('COM_CFORMS_ADVANCED')}}">
+					<div id="properties_advanced">
+						<div class="form-group">
+							<label for="cssClass"><jtext text="COM_CFORMS_CSS_CLASSES"></jtext></label>
+							<input type="text"
+							       class="form-control"
+							       id="cssClass"
+							       [(ngModel)]="field.cssClass"
+							       (change)="updateField(field)"
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="style"><jtext text="COM_CFORMS_CSS_STYLE"></jtext></label>
+							<input type="text"
+							       class="form-control"
+							       id="style"
+							       [(ngModel)]="field.style"
+							       (change)="updateField(field)"
+							/>
+						</div>
+
+						<div *ngIf="field.hasMapping && availableMappings != false" class="form-group">
+							<label for="mapping">
+								<jtext text="COM_CFORMS_DATA_MAPPING"></jtext>
+							</label>
+
+							<select
+									id="mapping" class="form-control"
+									[(ngModel)]="field.mapping.category"
+									(ngModelChange)="updateField(field)">
+								<option value=""><jtext text="COM_CFORMS_NONE"></jtext></option>
+
+								<option *ngFor="let category of availableMappings | keys" value="{{category.key}}">
+									<jtext text="{{'COM_CFORMS_FIELD_MAPPING_' + category.key.toUpperCase()}}"></jtext>
+								</option>
+							</select>
+
+							<div *ngIf="field.mapping['category']">
+								<label for="dataSource">
+									<jtext text="COM_CFORMS_DATA_SOURCE"></jtext>
+								</label>
+
+								<select id="dataSource" class="form-control"
+								        [(ngModel)]="field.mapping.dataSource"
+								        (ngModelChange)="updateField(field)">
+									<option value=""><jtext text="COM_CFORMS_PLEASE_SELECT"></jtext></option>
+
+									<option *ngFor="let dataSource of availableMappings[field.mapping['category']] | keys" value="{{dataSource.key}}">
+										{{availableMappings[field.mapping['category']][dataSource.key]}}
+									</option>
+								</select>
+							</div>
+
+							<div *ngIf="config.debugMode == 1">
+								{{field.mapping | json}}
+							</div>
+						</div>
+					</div>
+				</tab>
+				<!-- Conditions -->
+				<tab heading="{{jText._('COM_CFORMS_CONDITIONS')}}">
+					<div id="properties_conditions">
+						<div *ngIf="field.conditions.length > 0">
+							<p class="intro"><jtext text="COM_CFORMS_CONDITIONS_INTRO"></jtext></p>
+
+							<div *ngFor="let entry of field.conditions">
+
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-10">
+											<label><jtext text="COM_CFORMS_TASK"></jtext></label>
+										</div>
+										<div class="col-sm-2">
+											<button class="btn btn-warning btn-xs" (click)="removeCondition(entry)">
+												<i class="fa fa-times"></i>
+											</button>
+										</div>
+									</div>
+
+									<select class="form-control"
+									        [(ngModel)]="entry.task"
+									        (ngModelChange)="updateField(field)"
+										>
+										<option value="show"><jtext text="COM_CFORMS_SHOW"></jtext></option>
+										<option value="hide"><jtext text="COM_CFORMS_HIDE"></jtext></option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-10">
+											<label><jtext text="COM_CFORMS_RULES"></jtext></label>
+										</div>
+										<div class="col-sm-2">
+											<button class="btn btn-info btn-xs" (click)="addNewRule(entry)">
+												<i class="fa fa-plus"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<div *ngFor="let rule of entry.rules">
+
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-10">
+												<label><jtext text="COM_CFORMS_FIELD"></jtext></label>
+											</div>
+											<div class="col-sm-2">
+												<button class="btn btn-warning btn-xs" (click)="removeConditionRule(entry, rule)">
+													<i class="fa fa-times"></i>
+												</button>
+											</div>
+										</div>
+
+										<select class="form-control"
+										        [(ngModel)]="rule['field']"
+										        (ngModelChange)="updateField(field)"
+											>
+											<option value=""><jtext text="COM_CFORMS_PLEASE_SELECT"></jtext></option>
+											<option *ngFor="let formField of fields | exclude:field" value="{{formField.id}}">{{formField.label}}</option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label><jtext text="COM_CFORMS_MATCHES"></jtext></label>
+										<select class="form-control"
+										        [(ngModel)]="rule['matches']"
+										        (ngModelChange)="updateField(field)"
+										>
+											<option value=""><jtext text="COM_CFORMS_PLEASE_SELECT"></jtext></option>
+											<option value="value"><jtext text="COM_CFORMS_VALUE"></jtext></option>
+											<option value="empty"><jtext text="COM_CFORMS_EMPTY"></jtext></option>
+											<option value="notempty"><jtext text="COM_CFORMS_NOT_EMPTY"></jtext></option>
+										</select>
+									</div>
+
+									<div class="form-group" [hidden]="rule['matches'] != 'value'">
+										<label for="style"><jtext text="COM_CFORMS_VALUE"></jtext></label>
+										<input type="text"
+										       class="form-control"
+										       [(ngModel)]="rule['value']"
+										       (ngModelChange)="updateField(field)"
+										/>
+									</div>
+
+								</div>
+
+								<div *ngIf="config.debugMode == 1">
+									{{entry | json}}
+								</div>
+							</div>
+						</div>
+
+						<div id="condition-controls" class="text-center">
+							<button class="btn btn-default" (click)="newCondition(field)">
+								<jtext text="COM_CFORMS_NEW_CONDITION"></jtext>
+							</button>
+						</div>
+					</div>
+				</tab>
+			</tabset>
+			<!--//Field-->
+			<div id="field-controls" class="text-center">
+				<button class="btn btn-default" (click)="duplicateField(field)">
+					<jtext text="COM_CFORMS_DUPLICATE_FIELD"></jtext>
+
+				</button>
+				<button class="btn btn-default" (click)="deleteField(field)">
+					<jtext text="COM_CFORMS_DELETE_FIELD"></jtext>
+				</button>
+			</div>
+		</div>
+	</div>
+</form>
+
+<div style="overflow:scroll;" *ngIf="config.debugMode == 1">
+	{{diagnostic}}
+</div>

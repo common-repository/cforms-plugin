@@ -1,0 +1,47 @@
+<div id="email_modal_inner">
+    <strong><jtext text="COM_CFORMS_EMAIL_TEMPLATE"></jtext></strong>
+
+    <!--
+    <div>
+        <label><jtext text="COM_CFORMS_CHOOSE_TEMPLATE"></jtext></label>
+        <select id="template" class="form-control">
+            <option *ngFor="let mail of emails" value="{{mail.id}}">
+                {{mail.subject}}
+            </option>
+        </select>
+
+        <button class="btn btn-primary"><jtext text="COM_CFORMS_NEW_EMAIL_TEMPLATE"></jtext></button>
+    </div>
+    -->
+
+
+    <div *ngIf="email" class="form-group">
+        <label for="subject"><jtext text="COM_CFORMS_EMAIL_SUBJECT"></jtext></label>
+        <input type="text" id="subject" class="form-control"
+               [(ngModel)]="email.subject"
+               #subject
+               (change)="updateEmail(email)"/>
+    </div>
+
+    <label for="baseTextArea"><jtext text="COM_CFORMS_EMAIL_HTML_BODY"></jtext></label>
+    <div id="tinyFormGroup" class="form-group">
+        <div class="hidden">
+            <textarea id="baseTextArea"
+                      [(ngModel)]="email.html"
+                      (change)="updateEmail(email)">
+            </textarea>
+        </div>
+    </div>
+
+    <div *ngIf="email" class="form-group">
+        <label for="txt"><jtext text="COM_CFORMS_EMAIL_TEXT"></jtext></label>
+        <textarea id="txt" [(ngModel)]="email.txt"
+               #txt
+               (change)="updateEmail(email)">
+        </textarea>
+    </div>
+
+    <div [hidden]="config.debugMode == 0">
+        Mail: {{email | json}}
+    </div>
+</div>

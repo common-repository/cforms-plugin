@@ -1,0 +1,6 @@
+<div *ngIf="form.designRenderer != null && form.design != 'none'"
+     id="cforms_canvas_before" class="clearfix">
+	<link rel="stylesheet" [attr.href]="getCSS()"/>
+
+	<div [innerHTML]="form.designRenderer.renderBefore(form, currentPage)" id="cforms_canvas_before_inner"></div>
+</div>

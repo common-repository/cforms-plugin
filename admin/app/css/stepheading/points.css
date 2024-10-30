@@ -1,0 +1,84 @@
+/* CForms - Template for Point Steps */
+.steps-points {
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #6a6a6a;
+    overflow: hidden;
+    width: 635px;
+    margin: 0 auto;
+}
+
+.steps-points div {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    padding-left: 47px;
+}
+
+.steps-points .step-point:first-child {
+    padding-left: 35px !important;
+}
+
+.step-point {
+    background: #dcdcdc;
+    font-weight: 700;
+    font-size: 135%;
+    height: 80px;
+    position: relative;
+}
+
+.step-active {
+    background: #6a6a6a;
+    color: #fff;
+}
+
+.step-point:after, .step-point:before {
+    left: 100%;
+    top: 55%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.step-point:after, .step-point:before {
+    border-color: rgba(136, 183, 213, 0);
+    border-left-color: #dcdcdc;
+    border-width: 42px;
+    margin-top: -46px;
+}
+
+.step-active:after, .step-active:before {
+    border-left-color: #6a6a6a;
+}
+
+.step-point:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-left-color: #6a6a6a;
+    border-width: 49px;
+    margin-top: -54px;
+}
+
+.steps-points .step-point:last-child:after, .steps-points .step-point:last-child:before {
+    border: none;
+    padding-right: 20px;
+}
+
+.step-point:nth-child(0) {
+    z-index: 10;
+}
+
+.step-point:nth-child(1) {
+    z-index: 9;
+}
+
+.step-point:nth-child(2) {
+    z-index: 8;
+}
+
+.step-point:nth-child(3) {
+    z-index: 7;
+}

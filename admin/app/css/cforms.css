@@ -1,0 +1,149 @@
+/* CForms - Overrides CSS */
+.subhead-fixed {
+	display: none;
+}
+
+.compojoom-bootstrap {
+	margin-bottom: 0;
+}
+
+.ng-valid[required] {
+	border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid {
+	border-left: 5px solid #a94442; /* red */
+}
+
+.compojoom-bootstrap .properties-sizes .btn-sm {
+	padding: 5px 8px;
+}
+
+.field-spacer {
+	margin: 10px 0;
+}
+
+.compojoom-bootstrap .field-spacer hr {
+	border-top: 1px solid #bfbfbf;
+}
+
+.compojoom-bootstrap .form-horizontal .control-label {
+	width: 110px;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.compojoom-bootstrap .form-horizontal .form-control {
+	width: calc(100% - 120px);
+	display: inline-block;
+}
+
+.compojoom-bootstrap .pagination .selected a {
+	background: #e5e5e5;
+}
+
+.compojoom-bootstrap .padding-0 {
+	padding: 0;
+}
+
+.compojoom-bootstrap .padding-top-15 {
+	padding-top: 10px;
+}
+
+.compojoom-bootstrap #properties .radio, .compojoom-bootstrap #menu_configuration .radio {
+	padding-left: 0;
+}
+
+.compojoom-bootstrap .body.content.rows {
+	padding: 0;
+	background: #fff;
+}
+
+.c-toolbar-holder {
+	display: none;
+}
+
+.cmodal-fade {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	z-index: 998;
+}
+
+.cmodal {
+	position: fixed;
+	width: 800px;
+	height: 600px;
+	top: 50%;
+	left: 50%;
+	margin-left: -400px;
+	margin-top: -300px;
+	z-index: 999;
+	background: #fff;
+	color: #444;
+	overflow:scroll;
+}
+
+.form-control-div {
+	width: 100%;
+}
+
+.compojoom-bootstrap .form-horizontal .form-control-div {
+	width: calc(100% - 120px);
+	display: inline-block;
+}
+
+.compojoom-bootstrap .form-inline .form-control-div {
+	display: inline-block;
+	width: auto;
+	vertical-align: middle;
+}
+
+/* Loading dialog */
+
+#loading-dialog {
+	width: 100%;
+	min-height: 600px;
+}
+
+#loading-text {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 330px;
+	height: 83px;
+	padding-left:10px;
+	margin-left: -175px;
+	margin-top: -100px;
+	background: #fff;
+	border-radius: 5px;
+}
+
+/** Joomla overrides */
+body {
+	height: calc(100% - 30px) !important;
+}
+
+.compojoom-bootstrap .content {
+	min-height: calc(100% - 100px);
+}
+
+.compojoom-bootstrap .element-item img {
+	margin: 0 auto;
+}
+
+.compojoom-bootstrap .option-controls, .compojoom-bootstrap .option-header {
+	border-bottom: 1px dotted #ccc;
+	margin-bottom: 15px;
+}
+
+.compojoom-bootstrap .option-controls .fa {
+	color: #777;
+}
+
+.compojoom-bootstrap .option-controls-buttons {
+	padding: 5px 0 10px 0;
+}

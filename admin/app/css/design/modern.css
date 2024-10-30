@@ -1,0 +1,292 @@
+/**
+ * CForms - Design for modern CForms Template
+ *
+ * Template: Modern
+ * ---
+ * This template affects both the frontend and also the editing in the admin area!
+ *
+ * Copyright (C) 2017 Yves Hoppe - All rights reserved
+ */
+#canvas_draw {
+    display: flex;
+    overflow: auto !important;
+    padding: 0 !important;
+}
+
+#canvas_draw, .cforms_draw {
+    padding: 0;
+    box-shadow: 0 0 11px 2px rgba(0,0,0,0.35);
+}
+
+.cforms_draw {
+    flex-direction:row;
+}
+
+.cforms-content {
+    display: flex;
+}
+
+.cforms_draw {
+    min-height: 300px;
+}
+
+.cforms_navigation {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.cforms_draw::after {
+    content: '';
+    width: 100%;
+}
+
+.cforms-page-confirmation {
+    width: 100%;
+}
+
+.cforms_draw:last-child { /* or `:nth-child(n + 4)` */
+    order: 1;
+}
+
+#cforms_canvas {
+    background: #E8E9EE;
+}
+
+#cforms_canvas_before, #cforms_canvas_before_inner, .modern-left,
+    #cforms_canvas_after, #cforms_canvas_after_inner, .modern-right,
+    .inactive-page
+{
+    white-space: nowrap;
+}
+
+#cforms_canvas_before, #cforms_canvas_before_inner, #cforms_canvas_before .modern-left,
+    #cforms_canvas_after, #cforms_canvas_after_inner, #cforms_canvas_before .modern-right, #cforms_canvas_after_inner .modern-right,
+    #cforms_canvas_before .inactive-page, #cforms_canvas_after .inactive-page
+{
+    height: 100%;
+}
+
+.modern-left, .modern-right {
+    background: #fff;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.cforms-page {
+}
+
+.cforms-pages  {
+    width: 100%;
+}
+
+.compojoom-bootstrap .field-spacer hr {
+    background-color: #0F1D35;
+    border-color: #0F1D35;
+    color: #0F1D35;
+}
+
+canvas-design-before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modern-left .steps {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cforms_canvas_content, .compojoom-bootstrap .cforms-page {
+    background: #1085BB;
+    padding: 35px 35px;
+    width: 100%;
+    color: #fff;
+    min-height: 300px;
+}
+
+.inactive-page {
+    width: 80px;
+    background: #00008b;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.inactive-page .fa {
+    font-size: 150%;
+    color: #cacaca;
+}
+
+.inactive-page-number {
+    width: 100%;
+    color: #fff;
+    font-size: 125%;
+}
+
+.modern-step {
+    margin: 10px 0;
+    font-size: 85%;
+    color: #ccc;
+}
+
+.step-active {
+    font-size: 100%;
+    color: #333;
+}
+
+/* Form Styles */
+#cforms_canvas_content ::-webkit-input-placeholder, .compojoom-bootstrap .cforms-page ::-webkit-input-placeholder {
+    color: #72dfff;
+}
+#cforms_canvas_content :-moz-placeholder, .compojoom-bootstrap .cforms-page :-moz-placeholder {
+    color:    #72dfff;
+    opacity:  1;
+}
+#cforms_canvas_content ::-moz-placeholder {
+    color:    #72dfff;
+    opacity:  1;
+}
+#cforms_canvas_content :-ms-input-placeholder {
+    color:    #72dfff;
+}
+#cforms_canvas_content ::-ms-input-placeholder {
+    color:    #72dfff;
+}
+
+#cforms_canvas_content a, .compojoom-bootstrap .cforms-page a {
+    color: #fff;
+}
+
+#cforms_canvas_content input, .compojoom-bootstrap .cforms-page input {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #F1F1F1;
+    padding: 5px 0;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.compojoom-bootstrap .cforms-content .form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: none;
+    color: #fff;
+}
+
+.cforms-content input[type="text"]:focus, .cforms-content input[type="email"]:focus, .cforms-content input[type="url"]:focus,
+.cforms-content input[type="password"]:focus, .cforms-content input[type="search"]:focus, .cforms-content input[type="number"]:focus, .cforms-content input[type="tel"]:focus, input[type="range"]:focus,
+.cforms-content input[type="date"]:focus, .cforms-content input[type="month"]:focus, .cforms-content input[type="week"]:focus, .cforms-content input[type="time"]:focus,
+.cforms-content input[type="datetime"]:focus, .cforms-content input[type="datetime-local"]:focus, .cforms-content input[type="color"]:focus, .cforms-content textarea:focus {
+    color: #fff !important;
+}
+
+#cforms_canvas_content .input-checkbox-element input, .compojoom-bootstrap .cforms-page .input-checkbox-element input {
+    margin: 0;
+}
+
+.compojoom-bootstrap .cforms-page input:focus:invalid:focus, .compojoom-bootstrap .cforms-page textarea:focus:invalid:focus,
+.compojoom-bootstrap .cforms-page select:focus:invalid:focus {
+    box-shadow: none;
+    border-color: #fb2626;
+}
+
+.compojoom-bootstrap .cforms-page input.invalid  {
+    border-color: #fb2626 !important;
+}
+
+.compojoom-bootstrap label.invalid {
+    color: #fb2626 !important;
+}
+
+#cforms_canvas_content .btn-group, .compojoom-bootstrap .cforms-page .btn-group {
+    margin: 5px 0 0 0;
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.25);
+    border-radius: 3px;
+}
+
+#cforms_canvas_content .btn-group .btn, .compojoom-bootstrap .cforms-page .btn-group .btn {
+    font-size: 13px;
+    background: #1085BB;
+    border: 0;
+    margin: 0;
+}
+
+.input-checkbox-element {
+    color: #fff;
+}
+
+#cforms_canvas_content .btn-group .btn-success, .compojoom-bootstrap .cforms-page .btn-group .btn-success {
+    background: #fff;
+    color: #1085BB;
+}
+
+#cforms_canvas_content label, .compojoom-bootstrap .cforms-page label {
+    font-size: 85%;
+    font-weight: 300;
+    margin: 5px 0 0 0;
+    color: #18b9f4;
+}
+
+#cforms_canvas_content .field-element, .compojoom-bootstrap .cforms-page .field-element, .compojoom-bootstrap .cforms-page .cforms-field {
+    margin: 10px 0;
+}
+
+.inactive-page-1 {
+    background: #04183b;
+}
+
+.inactive-page-2 {
+    background: #0F1D35;
+}
+
+.inactive-page-3 {
+    background: #0F1D35;
+}
+
+.inactive-page-4 {
+    background: #082d6b;
+}
+
+.inactive-page-5 {
+    background: #5143ba;
+}
+
+.compojoom-bootstrap .fa {
+    font-style: normal;
+}
+
+.canvas-Sm .inactive-page {
+    display: none;
+}
+
+.canvas-Sm .modern-left .steps {
+    width: 30px;
+}
+
+.compojoom-bootstrap .canvas-Sm #cforms_canvas_content {
+    padding: 15px;
+}
+
+@media (max-width: 767px) {
+    .inactive-page {
+        display: none;
+    }
+
+    .modern-left .steps {
+        width: 30px;
+    }
+
+    .compojoom-bootstrap .cforms_navigation {
+        padding: 5px 0;
+    }
+
+    .compojoom-bootstrap .cforms-page {
+        padding: 15px;
+    }
+}
+
+/* No support for more than 5 pages (looks awful with more than 3 anyways) */

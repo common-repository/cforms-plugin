@@ -1,0 +1,32 @@
+/* CForms - Template for Rounded Steps */
+.steps-rounded {
+    text-align: center;
+}
+
+.steps-rounded div {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.step-rounded {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #dcdcdc;
+    font-weight: 700;
+    font-size: 135%;
+}
+
+.cforms-step-separator {
+    height: 3px;
+    width: 80px;
+    background: #dcdcdc;
+}
+
+.step-active {
+    background: #6a6a6a;
+    color: #fff;
+}

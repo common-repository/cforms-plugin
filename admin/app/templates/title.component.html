@@ -1,0 +1,41 @@
+<div id="cforms_title_bar_inner">
+    <div class="row" class="flex-center">
+        <div id="cforms_title" class="col-sm-4 flex-item">
+            <h3>&nbsp;
+            <span *ngIf="field" class="selected-element">
+                <template [ngIf]="field.hasLabel">{{field.label}}</template>
+                <template [ngIf]="!field.hasLabel">{{field.type}}</template>
+            </span>
+            </h3>
+        </div>
+        <div id="title_menu" class="col-sm-8 text-left">
+
+            <div id="title_menu_info" class="pull-left">
+                <strong><jtext text="COM_CFORMS_FORM"></jtext>:</strong> <i class="glyphicon glyphicon-bookmark"></i>
+                <h5>{{form.title}}</h5>
+            </div>
+
+            <div id="title_menu_right" class="text-center">
+                <div class="title-menu-item pull-right" (click)="saveAndClose()">
+                    <i class="glyphicon glyphicon-floppy-disk"></i>
+                    <h6><jtext text="COM_CFORMS_SAVE_AND_CLOSE"></jtext></h6>
+                </div>
+
+                <div class="title-menu-item pull-right" (click)="emailVisible = !emailVisible">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                    <h6><jtext text="COM_CFORMS_EMAIL"></jtext></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal_email"
+     class="cmodal-fade"
+     [hidden]="!emailVisible"
+     (click)="emailVisible = !emailVisible">
+</div>
+
+<div class="cmodal" [hidden]="!emailVisible">
+    <cforms-email [form]="form" [config]="config"></cforms-email>
+</div>

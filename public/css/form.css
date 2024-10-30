@@ -1,0 +1,52 @@
+/** CForms by compojoom.com CSS file */
+.control-label-confirmation {
+    min-width: 200px;
+}
+
+.end-text {
+    margin-top: 30px;
+}
+
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 600px;
+    margin: 20px auto
+}
+
+.compojoom-bootstrap .form-control-div {
+    display: block;
+}
+
+.compojoom-bootstrap .form-inline .form-control-div {
+    display: inline-block;
+}
+
+.compojoom-bootstrap .form-inline .control-label {
+    min-width: 150px;
+}
+
+.compojoom-bootstrap .form-group {
+    margin: 10px 0;
+}
+
+.compojoom-bootstrap .form-horizontal .form-control-div,
+.compojoom-bootstrap .form-horizontal .control-label,
+.compojoom-bootstrap .form-horizontal .form-control {
+    display: inline-block;
+}
+
+.compojoom-bootstrap .form-horizontal .form-control {
+    width: auto;
+}
+
+.compojoom-bootstrap .form-horizontal .control-label {
+    min-width: 150px;
+    padding-right: 10px;
+}
+
+.compojoom-bootstrap .label-hidden {
+    display: none;
+}

@@ -1,0 +1,55 @@
+<div *ngFor="let item of menuItems"
+    [class.selected]="item === selectedItem"
+    (click)="onSelectItem(item)"
+    class="menu-item">
+
+    <i class="{{item.icon}} menu-item-icon"></i>
+    <div class="menu-item-label">
+        <jtext [text]="item.label"></jtext>
+    </div>
+</div>
+<div *ngIf="form.designRenderer != null && form.designRenderer.getParams(form) != false"
+     class="menu-item"
+    [class.selected]="designItem === selectedItem"
+    (click)="onSelectItem(designItem)">
+
+    <i class="{{designItem.icon}} menu-item-icon"></i>
+    <div class="menu-item-label">
+        <jtext [text]="designItem.label"></jtext>
+    </div>
+</div>
+
+<div [hidden]="!isOpen" id="menu_view">
+    <div id="menu_view_inner">
+        <div [hidden]="selectedItem.id != 1">
+            <cforms-menu-elements
+                    [elements]="elements"
+                    [fields]="fields">
+                <jtext text="COM_CFORMS_ELEMENTS"></jtext>
+            </cforms-menu-elements>
+        </div>
+        <div [hidden]="selectedItem.id != 2">
+            <cforms-menu-pages>
+                <jtext text="COM_CFORMS_PAGES"></jtext>
+            </cforms-menu-pages>
+        </div>
+        <div [hidden]="selectedItem.id != 3">
+            <cforms-menu-layers
+                    [fields]="fields"
+                    [field]="field"
+                    (onSelectLayer)="onSelectLayer($event)">
+                <jtext text="COM_CFORMS_LAYERS"></jtext>
+            </cforms-menu-layers>
+        </div>
+        <div [hidden]="selectedItem.id != 4">
+            <cforms-menu-configuration [form]="form">
+                <jtext text="COM_CFORMS_CONFIG"></jtext>
+            </cforms-menu-configuration>
+        </div>
+        <div [hidden]="selectedItem.id != 5">
+            <cforms-menu-design [form]="form">
+                <jtext text="COM_CFORMS_DESIGN"></jtext>
+            </cforms-menu-design>
+        </div>
+    </div>
+</div>

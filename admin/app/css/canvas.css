@@ -1,0 +1,10 @@
+/** CForms - Canvas */
+
+.selected-field {
+	background: rgba(95, 252, 42, 0.1);
+	border-radius: 10px;
+}
+
+.field-element {
+	cursor: pointer;
+}
